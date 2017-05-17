@@ -5,7 +5,7 @@ from matplotlib import cm
 
 def get_output_name(filename):
     (name, ext) = os.path.splitext(filename)
-    return name+'_output.'+ext
+    return name+'_output'+ext
 
 
 def prepare_img(im, mean):

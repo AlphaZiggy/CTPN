@@ -26,6 +26,7 @@ import os.path as osp
 from utils.timer import Timer
 
 DEMO_IMAGE_DIR="demo_images/"
+DEMO_OUTPUT_DIR="demo_output/"
 NET_DEF_FILE="models/deploy.prototxt"
 MODEL_FILE="models/ctpn_trained_model.caffemodel"
 
@@ -58,7 +59,7 @@ for im_name in demo_imnames:
     print "Time: %f"%timer.toc()
 
     im_with_text_lines=draw_boxes(im, text_lines, is_display=False, caption=im_name, wait=False)
-    cv2.imwrite(get_output_name(im_name), im_with_text_lines)
+    cv2.imwrite(DEMO_OUTPUT_DIR+get_output_name(im_name), im_with_text_lines)
 
 print "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 print "Thank you for trying our demo. Press any key to exit..."
