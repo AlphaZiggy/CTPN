@@ -19,7 +19,7 @@
 #
 
 from cfg import Config as cfg
-from other import draw_boxes, resize_im, CaffeModel
+from other import get_output_name, draw_boxes, resize_im, CaffeModel
 import cv2, os, caffe, sys
 from detectors import TextProposalDetector, TextDetector
 import os.path as osp
@@ -57,9 +57,10 @@ for im_name in demo_imnames:
     print "Number of the detected text lines: %s"%len(text_lines)
     print "Time: %f"%timer.toc()
 
-    im_with_text_lines=draw_boxes(im, text_lines, caption=im_name, wait=False)
+    im_with_text_lines=draw_boxes(im, text_lines, is_display=False, caption=im_name, wait=False)
+    cv2.imwrite(get_output_name(im_name), im_with_text_lines)
 
 print "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 print "Thank you for trying our demo. Press any key to exit..."
-cv2.waitKey(0)
+#cv2.waitKey(0)
 
