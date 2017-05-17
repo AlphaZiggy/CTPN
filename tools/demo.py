@@ -40,6 +40,9 @@ else:
 text_proposals_detector=TextProposalDetector(CaffeModel(NET_DEF_FILE, MODEL_FILE))
 text_detector=TextDetector(text_proposals_detector)
 
+if not os.path.exists(DEMO_OUTPUT_DIR):
+    os.mkdir(DEMO_OUTPUT_DIR)
+
 demo_imnames=os.listdir(DEMO_IMAGE_DIR)
 timer=Timer()
 
