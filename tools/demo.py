@@ -19,7 +19,7 @@
 #
 
 from cfg import Config as cfg
-from other import get_output_name, draw_boxes, resize_im, CaffeModel
+from other import enlarge_boxes, get_output_name, draw_boxes, resize_im, CaffeModel
 import cv2, os, caffe, sys
 from detectors import TextProposalDetector, TextDetector
 import os.path as osp
