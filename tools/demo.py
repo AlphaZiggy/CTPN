@@ -57,6 +57,13 @@ for im_name in demo_imnames:
 
     im, f=resize_im(im, cfg.SCALE, cfg.MAX_SCALE)
     text_lines=text_detector.detect(im)
+    for box in text_lines:
+        margin_updown = (box[2] - box[0])*0.25
+        margin_leftright = margin_updown*2
+        box[0] = box[0] - margin_updown
+        box[2] = box[2] + margin_updown
+        box[1] = box[1] + margin_updown
+        box[3] = box[3] - margin_updown
 
     print "Number of the detected text lines: %s"%len(text_lines)
     print "Time: %f"%timer.toc()
