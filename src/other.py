@@ -3,6 +3,16 @@ import cv2, caffe
 import numpy as np
 from matplotlib import cm
 
+def enlarge_boxes(bboxes):
+    for box in bboxes:
+        margin_updown = (box[3] - box[1])*0.25
+        margin_leftright = margin_updown*2
+        box[0] = box[0] - margin_leftright
+        box[2] = box[2] + margin_leftright
+        box[1] = box[1] - margin_updown
+        box[3] = box[3] + margin_updown
+    return bboxes
+
 def get_output_name(filename):
     (name, ext) = os.path.splitext(filename)
     return name+'_output'+ext
